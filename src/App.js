@@ -1,24 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import Switch from "./Switch";
+import {ThemeProvider} from '@mui/material/styles';
+import theme from "./Theme";
+
+
+//TODO: install and include the title font
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+	  <ThemeProvider theme={theme}>
+		<div className="App">
+			<Switch/>
+		</div>
+	  </ThemeProvider>
   );
 }
 
