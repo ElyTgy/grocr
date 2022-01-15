@@ -8,11 +8,13 @@ export default createTheme({
                 light: "#A9C79E",
                 dark: "#000000",
                 lighter: "#DCE8D8",
-                offwhite: "#EEF4EC"
+                offwhite: "#EEF4EC",
+                contrastText: "#000"
             },
         secondary:
             {
-                main: "#C4C4C4"
+                main: "#C4C4C4",
+                contrastText: "#000"
             }
     }
 })

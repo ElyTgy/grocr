@@ -47,9 +47,9 @@ export default styled((props) => (
     },
     '& .MuiSwitch-thumb': {
       boxSizing: 'border-box',
-      width: height - 8,
-      height: height - 8,
-      transform: `translate(2px, 2.5px)`,
+      width: height - 6,
+      height: height - 6,
+      transform: `translate(1.5px, 1px)`,
       
     },
     '& .MuiSwitch-track': {
