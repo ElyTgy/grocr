@@ -52,7 +52,7 @@ export default function LandingPage(props){
     
     function handleClick(){
         if(currentPage<2){setPage(currentPage+1)}
-        else{window.location.assign('/home');}
+        else{window.location.assign('/lists');}
     }
 
 
