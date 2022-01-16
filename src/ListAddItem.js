@@ -1,6 +1,6 @@
 import "./ListBox.css"
 
-export default function ListBoxItem(props){
+export default function ListAddItem(props){
     console.log('hi')
     return(
     <div className="list-add-box">

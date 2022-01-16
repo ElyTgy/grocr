@@ -1,6 +1,5 @@
-import ListBoxItem from './ListBoxItem.js'
-import ListAddItem from './ListAddItem.js'
 import './Link.css'
+import BoxList from './BoxList'
 
 export default function(props){
     let myListItems = ''
@@ -9,9 +8,7 @@ export default function(props){
         myListItems = <p>You currently have no lists. <span className="link">Create a new list!</span></p>
     }
     else{
-        myListItems = [
-            <ListBoxItem name="This is a  list name"/>, 
-            <ListAddItem/>]
+        myListItems = <BoxList names={["sample","sample","sample","sample","sample"]}/>
     }
     
     return(

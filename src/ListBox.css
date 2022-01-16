@@ -1,3 +1,11 @@
+.box-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1600px;
+    margin: auto;
+}
+
 .list-item-box{
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -8,6 +16,8 @@
     display: flex;
 	align-items: flex-end;
     cursor: pointer;
+    margin-right:2.5em;
+    margin-bottom:2.5em;
 }
 
 .list-item-box p{
@@ -29,6 +39,8 @@
 	align-items: center;
     text-align: center;
     cursor:pointer;
+    margin-right:2.5em;
+    margin-bottom:2.5em;
 }
 
 .list-add-box p{
