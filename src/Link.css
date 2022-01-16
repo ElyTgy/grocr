@@ -1,0 +1,10 @@
+.link{
+    text-decoration: underline;
+    color: #528E3D;
+    cursor: pointer;
+    font-weight:300;
+}
+
+.link:active{
+    color:#A9C79E;
+}
