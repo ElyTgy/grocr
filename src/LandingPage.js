@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {CustomButton as Button} from './CustomComponents/Button' 
+import './LandingPage.css'
 
 
 const imgs = [
@@ -45,9 +46,9 @@ let buttonText = [
         'Get Started']
 
 
-
 export default function LandingPage(props){
     const [currentPage, setPage] = useState(0)
+    
     function handleClick(){
         if(currentPage<2){setPage(currentPage+1)}
         else{alert("Redirecting...")}//redirect}
@@ -55,10 +56,16 @@ export default function LandingPage(props){
 
 
     return (
-        <div>
-            {imgs[currentPage]}
-            <p>{explainText[currentPage]}</p>
-            <Button color="green">{buttonText[currentPage]}</Button>
+        <div className="landing-container">
+            <div className="landing">
+                <div className="landing-image">{imgs[currentPage]}</div>
+                <p className="landing-text"key={`text${currentPage}`}>{explainText[currentPage]}</p>
+            </div>
+            <Button className="landing-button" key={`button${currentPage}`}
+                onClick={handleClick} 
+                color={currentPage!==2?"green":null}>
+                    {buttonText[currentPage]}
+            </Button>
         </div>
     );
 }

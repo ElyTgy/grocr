@@ -23,5 +23,5 @@ const StyledButton = styled(Button)((props) => ({
 export function CustomButton(props) {
     let color = null;
     if(props.color==='grey'){color="#C4C4C4"}else if(props.color==='green'){color="#528E3D"}
-    return <StyledButton myBackgroundColor={color}>{props.children}</StyledButton>
+    return <StyledButton onClick={props.onClick} myBackgroundColor={color}>{props.children}</StyledButton>
 }
