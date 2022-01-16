@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled, createTheme, ThemeProvider } from '@mui/system';
-import theme from "./Theme";
+import theme from "../Theme";
 
 
 const StyledButton = styled(Button)((props) => ({
@@ -20,7 +20,7 @@ const StyledButton = styled(Button)((props) => ({
  
 
 
-export default function CustomButton(props) {
+export function CustomButton(props) {
     let color = null;
     if(props.color==='grey'){color="#C4C4C4"}else if(props.color==='green'){color="#528E3D"}
     return <StyledButton myBackgroundColor={color}>{props.children}</StyledButton>

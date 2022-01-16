@@ -1,4 +1,4 @@
-import BaseToggle from "./BaseToggle";
+import BaseToggle from "./CustomComponents/Togglers/BaseToggle";
 
 export default function SettingsButton(props)
 {

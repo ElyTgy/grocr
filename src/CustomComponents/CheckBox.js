@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Checkbox from '@mui/material/Checkbox';
-import theme from "./Theme";
+import theme from "../Theme";
 
 const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: 3,
