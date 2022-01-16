@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled, createTheme, ThemeProvider } from '@mui/system';
+import theme from "./Theme";
 
 
 const StyledButton = styled(Button)((props) => ({
