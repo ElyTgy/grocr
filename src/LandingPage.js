@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {CustomButton as Button} from './CustomComponents/Button' 
 import './LandingPage.css'
+import {Navigate} from 'react-router-dom';
 
 
 const imgs = [
@@ -51,7 +52,7 @@ export default function LandingPage(props){
     
     function handleClick(){
         if(currentPage<2){setPage(currentPage+1)}
-        else{alert("Redirecting...")}//redirect}
+        else{window.location.assign('/home');}
     }
 
 

@@ -1,0 +1,15 @@
+.settings{
+    display:flex;
+    flex-direction:column;
+}
+
+.settings-settingitem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.settings-settingitem-text{
+    display: inline;
+}
