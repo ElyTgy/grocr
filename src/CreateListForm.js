@@ -1,9 +1,14 @@
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import React, {Component} from 'react'
 import DropDown from './CustomComponents/Dropdown'
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import {CustomButton as Button} from "./CustomComponents/Button"
+
 
 const dietLabels = ['balanced', 'high fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium', 'none'] //optional
-const healhtLabels = ['alcohol-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'low-sugar', 'Mediterranean', 'No-oil-added', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free', 'shellfish-free', 'soy-free', 'sugar-conscious', 'vegan', 'vegetarian', 'wheat-free'] //optional
+const healthLabels = ['alcohol-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'low-sugar', 'Mediterranean', 'No-oil-added', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free', 'shellfish-free', 'soy-free', 'sugar-conscious', 'vegan', 'vegetarian', 'wheat-free'] //optional
 const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Teatime', 'none']
 
 
@@ -13,15 +18,15 @@ export default class CreateListForm extends Component{
         this.state = {
             listName:'',
             diet: null,
-            health:[],
+            health:Object.assign({}, ...healthLabels.map((x)=>({[x]:false}))),
             mealType:null,
-            items:[],
-            caloriesmin: 0,
-            caloriesmax: 2000
+            items: []
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeAlt = this.handleChangeAlt.bind(this);
+        this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     handleChange(evt){
@@ -32,9 +37,19 @@ export default class CreateListForm extends Component{
         this.setState({[name]:value})
     }
 
+    //TODO: this isnt working
+    handleCheckBoxChange(e){
+        let name = e.target.name
+        this.setState((st)=>{return {[st.health[name]] :![st.health[name]]}})
+    }
+
+    async handleSubmit(){
+        await this.props.addList(this.state.listName, this.state);
+    }
+
     componentDidMount(){
         ValidatorForm.addValidationRule("isUnique", value => {
-            for(let name of this.props.lisNames){
+            for(let name of this.props.listNames){
                 if(name === value){return false}
             }
             return true;
@@ -56,6 +71,12 @@ export default class CreateListForm extends Component{
                     />
                     <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
                     <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
+                    <br/>
+                    <div>
+                        <h4>Select different health options</h4>
+                        {healthLabels.map(label=><FormControlLabel control={<Checkbox name={label} onClick={this.handleCheckBoxChange} />} label={label}/>)}
+                    </div>
+                    <Button color="green" onClick={this.handleSubmit}>Make a list!</Button>
                 </ValidatorForm>
             </div>)
     }

@@ -1,19 +1,23 @@
 import './Link.css'
 import BoxList from './BoxList'
+import AppBar from './CustomComponents/AppBar'
 
 export default function(props){
     let myListItems = ''
 
-    if(!props.listNames){
-        myListItems = <p>You currently have no lists. <span className="link">Create a new list!</span></p>
+    if(props.listNames.length === 0){
+        myListItems = <p>You currently have no lists. <a className="link" href="/create-list">Create a new list</a></p>
     }
     else{
         myListItems = <BoxList listNames={props.listNames}/>
     }
     
     return(
-    <div class="mx-2 container-fluid">
-        <h1 className='mx-4 my-4'>My Lists</h1>
-        {myListItems}
-    </div>)
+        <div>
+        <AppBar/>
+        <div class="mx-2 container-fluid">
+            <h1 className='mx-4 my-4'>My Lists</h1>
+            {myListItems}
+        </div>
+        </div>)
 }

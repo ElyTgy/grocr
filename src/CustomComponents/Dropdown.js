@@ -34,13 +34,7 @@ const StyledMenu = styled((props) => (
         fontSize: 18,
         color: "#528E3D",
         marginRight: theme.spacing(1.5),
-      },
-      '&:active': {
-        backgroundColor: alpha(
-          "#528E3D",
-          theme.palette.action.selectedOpacity,
-        ),
-      },
+      }
     },
   },
 }));
