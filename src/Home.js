@@ -1,6 +1,6 @@
 import './Link.css'
 import BoxList from './BoxList'
-import AppBar from './CustomComponents/AppBar'
+import AppBar from './AppBar'
 
 export default function(props){
     let myListItems = ''
@@ -13,7 +13,7 @@ export default function(props){
     }
     
     return(
-        <div>
+        <div className="header-text">
         <AppBar/>
         <div class="mx-2 container-fluid">
             <h1 className='mx-4 my-4'>My Lists</h1>

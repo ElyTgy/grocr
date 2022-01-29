@@ -1,6 +1,3 @@
-import './App.css';
-import {ThemeProvider} from '@mui/material/styles';
-import theme from "./Theme";
 import {Route, Routes} from "react-router-dom";
 import React, {useState} from 'react';
 import LandingPage from './LandingPage'
@@ -14,7 +11,7 @@ import axios from 'axios';
 
 
 function App() {
-	const [listNames, setListNames] = useState([]); 
+	const [listNames, setListNames] = useState(['test']); 
 	const [reqs, setreqs] = useState({})
 	const [reqsSent, setReqsSent] = useState(0)
 	async function addList(newName, items){
@@ -33,13 +30,11 @@ function App() {
 	}
 
 	return (
-		<ThemeProvider className="App" theme={theme}>
-			<Routes>
-				<Route path="/" element={<LandingPage/>}/>
-				<Route path="/home" element={<Home listNames={listNames}/>}/>
-				<Route path="/create-list" element={<CreateListForm listNames={listNames} addList={addList}/>}/>
-			</Routes>
-		</ThemeProvider>
+		<Routes>
+			<Route path="/" element={<LandingPage/>}/>
+			<Route path="/home" element={<Home listNames={listNames}/>}/>
+			<Route path="/create-list" element={<CreateListForm listNames={listNames} addList={addList}/>}/>
+		</Routes>
 	);
 }
 

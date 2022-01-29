@@ -14,3 +14,15 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+  .body-text{
+    @apply font-light font-['Jost'] text-base
+  } 
+  .header-text{
+    @apply font-medium font-['Jost'] text-xl
+  }
+  .title-text{
+    @apply font-black font-['title'] text-3xl
+  }
+}
