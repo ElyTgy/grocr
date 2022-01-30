@@ -1,4 +1,3 @@
-import './Link.css'
 import BoxList from './BoxList'
 import AppBar from './AppBar'
 
@@ -13,10 +12,10 @@ export default function(props){
     }
     
     return(
-        <div className="header-text">
+        <div className="header-text h-screen dark:bg-grey-400">
         <AppBar/>
-        <div class="mx-2 container-fluid">
-            <h1 className='mx-4 my-4'>My Lists</h1>
+        <div class=" mx-2 container-fluid">
+            <h1 className='dark:text-white mx-4 my-4'>My Lists</h1>
             {myListItems}
         </div>
         </div>)
