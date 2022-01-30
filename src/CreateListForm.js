@@ -7,9 +7,9 @@ import Checkbox from '@mui/material/Checkbox';
 import {CustomButton as Button} from "./CustomComponents/Button"
 
 
-const dietLabels = ['balanced', 'high fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium', 'none'] //optional
+const dietLabels = ['pescetarian', 'lacto vegetarian', 'ovo vegetarian', 'vegan', 'vegetarian'] //optional
 const healthLabels = ['alcohol-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'low-sugar', 'Mediterranean', 'No-oil-added', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free', 'shellfish-free', 'soy-free', 'sugar-conscious', 'vegan', 'vegetarian', 'wheat-free'] //optional
-const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Teatime', 'none']
+const mealTypes = ['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'drink', 'none']
 
 
 export default class CreateListForm extends Component{
@@ -69,7 +69,7 @@ export default class CreateListForm extends Component{
                     validators={['required', 'isUnique']}
                     errorMessages={['list must have a name', 'name of the list must be unique']}
                     />
-                    <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
+                    <DropDown handleChange={this.handleChangeAlt} text='select diet' name='diet' options={dietLabels}/>
                     <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
                     <br/>
                     <div>
