@@ -1,10 +1,8 @@
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import React, {Component} from 'react'
-import DropDown from './CustomComponents/Dropdown'
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import {CustomButton as Button} from "./CustomComponents/Button"
+import DropDown from './DropDown';
+import Checkbox from './Checkbox';
+import Button from "./Button"
 
 
 const dietLabels = ['balanced', 'high fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium', 'none'] //optional
@@ -40,6 +38,7 @@ export default class CreateListForm extends Component{
     //TODO: this isnt working
     handleCheckBoxChange(e){
         let name = e.target.name
+        alert(name)
         this.setState((st)=>{return {[st.health[name]] :![st.health[name]]}})
     }
 
@@ -58,26 +57,29 @@ export default class CreateListForm extends Component{
 
     render(){
         return(
-            <div class="mx-2 container-fluid">
-                <h1 className='mx-4 my-4'>Create your List!</h1>
-                <ValidatorForm>
-                    <TextValidator
-                    name="listName"
-                    value={this.state.listName}
-                    onChange={this.handleChange}
-                    placeholder="list name"
-                    validators={['required', 'isUnique']}
-                    errorMessages={['list must have a name', 'name of the list must be unique']}
-                    />
-                    <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
-                    <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
+            <div class="mx-6 my-4">
+                <h1 className='mb-5'>Create your List!</h1>
+                <form className="ml-5">
+                    <div className="mb-5 flex justify-evenly items-center">
+                        <input className="" 
+                            name="listName" 
+                            value={this.state.listName}
+                            onChange={this.handleChange}
+                            placeholder="list name"/>
+                        <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
+                        <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
+                    </div>
                     <br/>
-                    <div>
-                        <h4>Select different health options</h4>
-                        {healthLabels.map(label=><FormControlLabel control={<Checkbox name={label} onClick={this.handleCheckBoxChange} />} label={label}/>)}
+                    <div class="flex justify-center">
+                        <div>
+                            <div class="form-check">
+                                <h4>Select different health options</h4>
+                                {healthLabels.map(label=>{return <Checkbox name={label}/>})}
+                            </div>
+                        </div>
                     </div>
                     <Button color="green" onClick={this.handleSubmit}>Make a list!</Button>
-                </ValidatorForm>
+                </form>
             </div>)
     }
     
