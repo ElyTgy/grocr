@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import LandingPage from './LandingPage'
 import Home from './Home.js';
 import CreateListForm from './CreateListForm'
-import Input from './CustomComponents/Input'
 import axios from 'axios';
 
 //TODO: add local storage or db

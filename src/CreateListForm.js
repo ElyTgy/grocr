@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import DropDown from './DropDown';
 import Checkbox from './Checkbox';
 import Button from "./Button"
-
+import Input from './Input';
 
 const dietLabels = ['balanced', 'high fiber', 'high-protein', 'low-carb', 'low-fat', 'low-sodium', 'none'] //optional
 const healthLabels = ['alcohol-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'low-sugar', 'Mediterranean', 'No-oil-added', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free', 'shellfish-free', 'soy-free', 'sugar-conscious', 'vegan', 'vegetarian', 'wheat-free'] //optional
@@ -58,14 +58,14 @@ export default class CreateListForm extends Component{
     render(){
         return(
             <div class="mx-6 my-4">
-                <h1 className='mb-5'>Create your List!</h1>
+                <h1 className='header-text mb-5'>Create your List!</h1>
                 <form className="ml-5">
                     <div className="mb-5 flex justify-evenly items-center">
-                        <input className="" 
-                            name="listName" 
-                            value={this.state.listName}
-                            onChange={this.handleChange}
-                            placeholder="list name"/>
+                        <Input 
+                        name="listName" 
+                        value={this.state.listName}
+                        onChange={this.handleChange}
+                        placeholder="list name"/>
                         <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
                         <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
                     </div>

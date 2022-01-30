@@ -19,6 +19,7 @@ export default function DropDown(props) {
         class="
           dropdown-toggle
           w-52
+          h-8
           text-center
           px-6
           py-2.5
