@@ -1,7 +1,7 @@
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import React, {Component} from 'react'
 import DropDown from './DropDown';
-import Checkbox from './Checkbox';
+import Checkbox from './Checkbox2';
 import Button from "./Button"
 import Input from './Input';
 
@@ -58,24 +58,22 @@ export default class CreateListForm extends Component{
     render(){
         return(
             <div class="mx-6 my-4">
-                <h1 className='header-text mb-5'>Create your List!</h1>
-                <form className="ml-5">
-                    <div className="mb-5 flex justify-evenly items-center">
+                <h1 className='sm:text-left text-center header-text mb-10'>Create your List!</h1>
+                <form className="ml-5 flex flex-col">
+                    <div className="mb-5 flex flex-col justify-evenly items-center md:flex-row">
                         <Input 
+                        className="mb-12"
                         name="listName" 
                         value={this.state.listName}
                         onChange={this.handleChange}
                         placeholder="list name"/>
-                        <DropDown handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
+                        <DropDown className="mb-12" handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
                         <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
                     </div>
-                    <br/>
-                    <div class="flex justify-center">
-                        <div>
-                            <div class="form-check">
-                                <h4>Select different health options</h4>
-                                {healthLabels.map(label=>{return <Checkbox name={label}/>})}
-                            </div>
+                    <div className="mb-10">
+                        <h4 className="font-medium mb-3">Select different health options</h4>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {healthLabels.map(label=>{return <Checkbox name={label}/>})}
                         </div>
                     </div>
                     <Button color="green" onClick={this.handleSubmit}>Make a list!</Button>

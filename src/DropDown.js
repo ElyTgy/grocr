@@ -11,7 +11,7 @@ export default function DropDown(props) {
   }
 
   return (
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-3 md:mb-0">
   <div>
     <div class="dropdown relative align-middle">
       <button
