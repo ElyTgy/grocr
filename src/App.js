@@ -13,17 +13,22 @@ function App() {
 	const [listNames, setListNames] = useState(['test']); 
 	const [reqs, setreqs] = useState({})
 	const [reqsSent, setReqsSent] = useState(0)
-	// I am assuming 
-	async function addList(newName, items){
+	// we can test w/ less fields for now 
+	async function addList(newName, items, userType, userDiet, userCuisine, userIntolerances, userExclusions){
 		setListNames([...listNames, newName])
+		// search recipes function
 		let response = await axios.get(
-			`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients`, {
+			`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search`, {
 			params: {
-				//TODO: integrate ingredients param w/ user's entered items on lists 
-				ingredients: newName, //search param
-				ranking: '1',
-				ignorePantry: 'true',
-				number: '5'
+				//TODO: integrate these params w/ user's entered items on lists 
+				query: items, // search param (ingredient user entered e.g. tofu) 
+				type: userType, // comma separated
+				offset: '0',
+				number: '10', 
+				intolerances: userIntolerances, // field to be included 
+				excludeIngredients: userExclusions, // maybe a setting user can enter in the landing page?
+				diet: userDiet, // comma separated
+				cuisine: userCuisine // this can be set to 'none' by default 
 			},
 			headers: {
 				'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
