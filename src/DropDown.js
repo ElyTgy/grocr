@@ -4,11 +4,7 @@ export default function DropDown(props) {
   const [selectedOption, setOption] = React.useState(null);
   const [dropDownState, toggleDrowDown] = React.useState(false);
   
-  function saveOption(e){
-    if(e.target.outerText === 'none'){setOption(null)}
-    else{setOption(e.target.outerText)}
-    props.handleChange(props.name, e.target.outerText)
-  }
+  React.useEffect(()=>props.handleChange(props.name, selectedOption), [selectedOption])
 
   return (
     <div class="flex justify-center mb-3 md:mb-0">
@@ -90,7 +86,7 @@ export default function DropDown(props) {
         {
             props.options.map(option => {
                 return(
-                    <li key={option} name={option} onClick={saveOption}>
+                    <li key={option} name={option} onClick={(e)=>e.target.innerText!=='none'?setOption(e.target.innerText):null}>
                         <a
                             class="
                             dropdown-item

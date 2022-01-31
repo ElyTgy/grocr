@@ -9,7 +9,7 @@ export default function CheckBox(props){
     }
 
     return (
-    <div class="form-check">
+    <div className="form-check" className="selection:bg-transparent">
       <label onClick={onClick} 
             className={`cursor-pointer inline-block ${!toggleState ? 'text-gray-800' : 'text-green-400 font-bold'}`}
             >

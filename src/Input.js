@@ -1,6 +1,6 @@
 export default function Input(props){
     return(
-        <input {...props} 
+        <input {...props}
         className=
         "w-52 h-8 mb-3 md:mb-0
         rounded border-2 border-solid border-green-400 

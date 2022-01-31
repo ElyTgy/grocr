@@ -1,4 +1,3 @@
-import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import React, {Component} from 'react'
 import DropDown from './DropDown';
 import Checkbox from './Checkbox2';
@@ -10,6 +9,7 @@ const dietLabels = ['balanced', 'high fiber', 'high-protein', 'low-carb', 'low-f
 const healthLabels = ['alcohol-free', 'crustacean-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free', 'keto-friendly', 'kidney-friendly', 'kosher', 'low-potassium', 'low-sugar', 'Mediterranean', 'No-oil-added', 'paleo', 'peanut-free', 'pecatarian', 'pork-free', 'red-meat-free', 'sesame-free', 'shellfish-free', 'soy-free', 'sugar-conscious', 'vegan', 'vegetarian', 'wheat-free'] //optional
 const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Teatime', 'none']
 
+//TODO: handle validation
 
 export default class CreateListForm extends Component{
     constructor(props){
@@ -19,7 +19,7 @@ export default class CreateListForm extends Component{
             diet: null,
             health:[],
             mealType:null,
-            items: []
+            //items: []
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,37 +36,37 @@ export default class CreateListForm extends Component{
         this.setState({[name]:value})
     }
 
-    //TODO: this isnt working
     handleCheckBoxChange(e){
         let name = e.target.innerText
         this.setState((st)=>{return {health:[...st.health, name]}})
     }
 
-    async handleSubmit(){
-        await this.props.addList(this.state.listName, this.state);
+    handleSubmit(){
+        this.props.addList(this.state);
     }
 
-    componentDidMount(){
-        ValidatorForm.addValidationRule("isUnique", value => {
-            for(let name of this.props.listNames){
-                if(name === value){return false}
-            }
-            return true;
-        })
-    }
+    //componentDidMount(){
+    //    ValidatorForm.addValidationRule("isUnique", value => {
+    //        for(let name of this.props.listNames){
+    //            if(name === value){return false}
+    //        }
+    //        return true;
+    //    })
+    //}
 
     render(){
         return(
             <div class="mx-6 my-4">
                 <h1 className='sm:text-left text-center header-text mb-10'>Create your List!</h1>
-                <form className="ml-5 flex flex-col">
+                <form className="ml-5 flex flex-col" onSubmit={(e)=>e.preventDefault()}>
                     <div className="mb-5 flex flex-col justify-evenly items-center md:flex-row">
                         <Input 
                         className="mb-12"
                         name="listName" 
                         value={this.state.listName}
                         onChange={this.handleChange}
-                        placeholder="list name"/>
+                        placeholder="list name"
+                        />
                         <DropDown className="mb-12" handleChange={this.handleChangeAlt} text='selet diet' name='diet' options={dietLabels}/>
                         <DropDown handleChange={this.handleChangeAlt} text='select meal' name='mealType' options={mealTypes}/>
                     </div>
