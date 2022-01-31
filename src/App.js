@@ -48,7 +48,7 @@ function App() {
 
 		<Routes>
 			<Route path="/" element={<LandingPage/>}/>
-			<Route path="/home" element={<Home listNames={listNames}/>}/>
+			<Route path="/lists" element={<Home listNames={listNames}/>}/>
 			<Route path="/create-list" element={<CreateListForm listNames={listNames} addList={addList}/>}/>
 		</Routes>
 	);

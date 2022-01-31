@@ -17,7 +17,7 @@ export default class CreateListForm extends Component{
         this.state = {
             listName:'',
             diet: null,
-            health:Object.assign({}, ...healthLabels.map((x)=>({[x]:false}))),
+            health:[],
             mealType:null,
             items: []
         }
@@ -38,9 +38,8 @@ export default class CreateListForm extends Component{
 
     //TODO: this isnt working
     handleCheckBoxChange(e){
-        let name = e.target.name
-        alert(name)
-        this.setState((st)=>{return {[st.health[name]] :![st.health[name]]}})
+        let name = e.target.innerText
+        this.setState((st)=>{return {health:[...st.health, name]}})
     }
 
     async handleSubmit(){
@@ -74,7 +73,7 @@ export default class CreateListForm extends Component{
                     <div className="mb-10">
                         <h4 className="font-medium mb-3">Select different health options</h4>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {healthLabels.map(label=>{return <Checkbox name={label}/>})}
+                            {healthLabels.map(label=>{return <Checkbox onClick={this.handleCheckBoxChange}>{label}</Checkbox>})}
                         </div>
                     </div>
                     <Button color="green" onClick={this.handleSubmit}>Make a list!</Button>

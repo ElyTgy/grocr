@@ -3,11 +3,17 @@ import React from 'react';
 export default function CheckBox(props){
     const [toggleState, toggle] = React.useState(false)
   
+    function onClick(e){
+      toggle(!toggleState)
+      props.onClick(e)
+    }
+
     return (
     <div class="form-check">
-      <label onClick={()=>toggle(!toggleState)} 
-            className={`cursor-pointer inline-block ${!toggleState ? 'text-gray-800' : 'text-green-400 font-bold'}`}>
-        {props.name}
+      <label onClick={onClick} 
+            className={`cursor-pointer inline-block ${!toggleState ? 'text-gray-800' : 'text-green-400 font-bold'}`}
+            >
+        {props.children}
       </label>
     </div>
 
