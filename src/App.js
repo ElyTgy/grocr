@@ -1,6 +1,3 @@
-import './App.css';
-import {ThemeProvider} from '@mui/material/styles';
-import theme from "./Theme";
 import {Route, Routes} from "react-router-dom";
 import React, {useState, useEffect} from 'react';
 import LandingPage from './LandingPage'
@@ -16,7 +13,7 @@ import Recipes from './Recipes';
 //TODO: try catch
 
 function App() {
-	const [listNames, setListNames] = useState(['sample 1', 'sample 2']); 
+	const [listNames, setListNames] = useState(['test']); 
 	const [reqs, setreqs] = useState({})
 	const [reqsSent, setReqsSent] = useState(0)
 	
@@ -48,30 +45,13 @@ function App() {
 	})
 
 	return (
-		<ThemeProvider className="App" theme={theme}>
-			<Routes>
-				<Route path="/" element={<LandingPage/>}/>
-					<Route path="lists" element={<Home listNames={listNames}/>}>
-						<Route exact path=":newList" element={<Recipes/>}/>
-					</Route>
-					<Route path="create-list" element={<CreateListForm listNames={listNames} addList={addList}/>}/>
-				<Route/>
-				<Route
-					path="*"
-					element={
-						<main style={{ padding: "1rem" }}>
-						<p>There's nothing here!</p>
-						</main>
-					}/>
-			</Routes>
-		</ThemeProvider>
+
+		<Routes>
+			<Route path="/" element={<LandingPage/>}/>
+			<Route path="/home" element={<Home listNames={listNames}/>}/>
+			<Route path="/create-list" element={<CreateListForm listNames={listNames} addList={addList}/>}/>
+		</Routes>
 	);
 }
 
 export default App;
-
-/*
-
-
-
-*/

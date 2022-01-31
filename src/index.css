@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .body-text{
+    @apply font-light font-['Jost'] text-base
+  } 
+  .header-text{
+    @apply font-medium font-['Jost'] text-xl
+  }
+  .title-text{
+    @apply font-black font-['title'] text-3xl
+  }
+  .link{
+    @apply underline bg-green-400 cursor-pointer font-light active:text-[#A9C79E]
+  }
+}

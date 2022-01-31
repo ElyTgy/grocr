@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {CustomButton as Button} from './CustomComponents/Button' 
-import './LandingPage.css'
+import Button from './Button';
 import {Navigate} from 'react-router-dom';
 
 
@@ -57,10 +56,10 @@ export default function LandingPage(props){
 
 
     return (
-        <div className="landing-container">
-            <div className="landing">
-                <div className="landing-image">{imgs[currentPage]}</div>
-                <p className="landing-text"key={`text${currentPage}`}>{explainText[currentPage]}</p>
+        <div className='dark:bg-grey-400 dark:text-white d flex flex-col items-center justify-center h-screen mx-w-sm'>
+            <div className="flex flex-col items-center py-4 text-4xl text-center font-extralight">
+                <div className="mb-5">{imgs[currentPage]}</div>
+                <p className="landing-text" key={`text${currentPage}`}>{explainText[currentPage]}</p>
             </div>
             <Button className="landing-button" key={`button${currentPage}`}
                 onClick={handleClick} 
